@@ -1,0 +1,12 @@
+# Linux specific .zshrc stuff
+
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/apps/Godot_v4.2.1-stable_mono_linux_x86_64:$PATH
+export PATH=$HOME/bin:$HOME/apps/Godot_v4.2.1-stable_mono_linux_x86_64:/usr/local/bin:$PATH
+
+
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
+
+
+
