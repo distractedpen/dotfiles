@@ -23,7 +23,7 @@ local function get_jdtls_paths()
 
    local path = {}
 
-   path.data_dir = vim.fm.stdpath('cache') ..'/nvim-jdtls'
+   path.data_dir = vim.fn.stdpath('cache') ..'/nvim-jdtls'
 
 
    local jdtls_install = require('mason-registry')

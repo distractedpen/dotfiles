@@ -8,7 +8,7 @@ end
 nvim_treesitter.setup {
     ensure_installed = {
         'bash', 'c', 'css', 'html', 'javascript', 'json', 'lua', 'python',
-        'rust', 'typescript', 'vim', 'yaml', 'markdown', 'java', 'vim', 'vimdoc',
+        'rust', 'typescript', 'vim', 'yaml', 'markdown', 'vim', 'vimdoc',
     },
     sync_install = false,
     highlight = {
