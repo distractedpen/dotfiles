@@ -34,4 +34,7 @@ alias vim="nvim"
 alias da="ls -la"
 alias nvimconfig="cd ~/.config/nvim"
 
-source "./.zshrc-`uname`"
+source "$HOME/.zshrc-`uname`"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

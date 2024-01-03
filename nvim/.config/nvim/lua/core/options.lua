@@ -19,6 +19,7 @@ opt.smartcase = true                   -- Ignore lowercase for the whole pattern
 opt.linebreak = true                   -- wrap on word boundary
 opt.termguicolors = true               -- Enable 24-bit RGB colors
 opt.laststatus = 3                     -- Set global status line
+opt.relativenumber = true              -- Use relative numberings
 
 -- Tabs, indents
 opt.expandtab = true                   -- Use spaces instead of tabs

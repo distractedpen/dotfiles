@@ -49,9 +49,9 @@ lazy.setup({
     }, ]]
 
     -- Catpuccin color Scheme
-    { 
-        "catppuccin/nvim", 
-        name = "catppuccin", 
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
         lazy = false,
     },
@@ -124,6 +124,30 @@ lazy.setup({
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make'
+    },
+
+    -- Tree File Viewer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("neo-tree").setup({
+                filesystem = {
+                    filtered_items = {
+                        never_show = {
+                            ".DS_Store",
+                            ".git"
+                        },
+                    }
+                },
+
+            });
+        end,
     },
 
     -- Git Integration
