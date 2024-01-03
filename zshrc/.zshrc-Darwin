@@ -1,0 +1,18 @@
+# MacOS Specific .zshrc configuration
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.jenv/bin:$PATH
+
+# setup homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)" 
+# setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+# setup jenv
+eval "$(jenv init -)"
+
+# Compilation flags
+export ARCHFLAGS="-arch amd64"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# AEM Specific aliases
+alias buildAEM="mvn clean install -Padobe-public -PautoInstallPackage"
