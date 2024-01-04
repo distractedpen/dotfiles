@@ -14,6 +14,7 @@ require('plugins/nvim-treesitter')
 require('plugins/nvim-cmp')
 require('plugins/nvim-telescope')
 require('plugins/jdtls')
+require('plugins/nvim-sonarlint')
 require('plugins/nvim-harpoon')
 require('plugins/nvim-neotree')
 
