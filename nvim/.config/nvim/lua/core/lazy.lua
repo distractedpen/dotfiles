@@ -1,8 +1,6 @@
 -- Plugin manager configuration file
 
--- Plugin manager: lazy.nvim
--- URL: https://github.com/folke/lazy.nvim
-
+-- Plugin manager: lazy.nvim URL: https://github.com/folke/lazy.nvim
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -19,34 +17,21 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- use a protected call so we don't error out on first use
-local status_ok, lazy = pcall(require, 'lazy')
- if not status_ok then
-     return
- end
+local status_ok, lazy = pcall(require, "lazy")
+if not status_ok then
+    return
+end
 
 -- Start setup
 lazy.setup({
-    -- Comment
+    -- Shortcut to comment out lines
     {
-        'numToStr/Comment.nvim',
+        "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
         end,
         lazy = false,
     },
-
-    --[[ -- Ayu Color Scheme
-    {
-        'Shatur/neovim-ayu',
-        config = function()
-            require('ayu').setup({
-                mirage = true,
-                overrides = {},
-            })
-            require('ayu').colorscheme()
-        end,
-        lazy = false,
-    }, ]]
 
     -- Catpuccin color Scheme
     {
@@ -58,78 +43,74 @@ lazy.setup({
 
     -- Lualine
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
             require("lualine").setup({
                 icons_enabled = true,
-                theme = 'ayu',
+                theme = "ayu",
             })
         end,
     },
 
     -- LSP Server Configuration
     { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim"},
-    { "neovim/nvim-lspconfig"},
+    { "williamboman/mason-lspconfig.nvim" },
+    { "neovim/nvim-lspconfig" },
 
     -- Special Java LSP handling
     { "mfussenegger/nvim-jdtls" },
-
     -- Sonarlint for Java
     { url = "https://www.gitlab.com/schrieveslaach/sonarlint.nvim" },
-
-
     -- Special C# Handling for Godot
     { "Hoffs/omnisharp-extended-lsp.nvim" },
 
+    -- FORMATTERS
+    { "wesleimp/stylua.nvim" },
+
     -- Nvim Treesitter
     {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
     },
 
     -- Harpoon
-    { "nvim-lua/plenary.nvim" }, -- don't forget to add this one if you don't have it yet!
+    { "nvim-lua/plenary.nvim" },
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { { "nvim-lua/plenary.nvim" } },
     },
 
     -- Code Completion nvim-cmp
     {
-        'hrsh7th/nvim-cmp',
+        "hrsh7th/nvim-cmp",
         dependencies = {
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            'rafamadriz/friendly-snippets',
-            'hrsh7th/cmp-nvim-lsp',
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+            "hrsh7th/cmp-nvim-lsp",
         },
     },
-
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
-
-
     -- Neodev for code completion inside neovim configuration files
-    { 'folke/neodev.nvim', opts = {} },
+    { "folke/neodev.nvim", opts = {} },
 
     -- Telescope Funny Finder
     {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.5",
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make'
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
     },
-
     -- Tree File Viewer
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -145,41 +126,47 @@ lazy.setup({
                     filtered_items = {
                         never_show = {
                             ".DS_Store",
-                            ".git"
+                            ".git",
                         },
-                    }
+                    },
                 },
-
-            });
+            })
         end,
     },
 
     -- Git Integration
-    { 'tpope/vim-fugitive' },
-
+    { "tpope/vim-fugitive" },
     -- Git Signs for git change highlighting
-    { 'lewis6991/gitsigns.nvim' },
+    { "lewis6991/gitsigns.nvim" },
 
     -- Tmux Integration
     {
-      "christoomey/vim-tmux-navigator",
-      cmd = {
-        "TmuxNavigateLeft",
-        "TmuxNavigateDown",
-        "TmuxNavigateUp",
-        "TmuxNavigateRight",
-        "TmuxNavigatePrevious",
-      },
-      keys = {
-        { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-        { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-        { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-        { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-        { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-      },
-    }
+        "christoomey/vim-tmux-navigator",
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+        },
+        keys = {
+            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+        },
+    },
+
+    -- Nvim Surround
+    {
+        "kylechui/nvim-surround",
+        tag = "*",
+        config = function()
+            require("nvim-surround").setup({})
+        end
+    },
 })
 
-
--- Set the colorscheme
-vim.cmd.colorscheme "catppuccin-mocha"
+-- Set the colorscheme to use catppuccin plugin
+vim.cmd.colorscheme("catppuccin-mocha")
