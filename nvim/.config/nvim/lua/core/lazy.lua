@@ -78,6 +78,10 @@ lazy.setup({
     -- Special Java LSP handling
     { "mfussenegger/nvim-jdtls" },
 
+    -- Sonarlint for Java
+    { url = "https://www.gitlab.com/schrieveslaach/sonarlint.nvim" },
+
+
     -- Special C# Handling for Godot
     { "Hoffs/omnisharp-extended-lsp.nvim" },
 
