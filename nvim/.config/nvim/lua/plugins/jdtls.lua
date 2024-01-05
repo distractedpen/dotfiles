@@ -25,7 +25,6 @@ local function get_jdtls_paths()
 
    path.data_dir = vim.fn.stdpath('cache') ..'/nvim-jdtls'
 
-
    local jdtls_install = require('mason-registry')
        .get_package('jdtls')
        :get_install_path()
@@ -35,12 +34,22 @@ local function get_jdtls_paths()
 
     if vim.fn.has('mac') == 1 then
         path.platform_config = jdtls_install .. '/config_mac'
+        -- path.runtimes = {
+        --     {
+        --         name = "JavaSE-11",
+        --         path = "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home",
+        --
+        --     },
+        --     {
+        --         name = "JavaSE-17",
+        --         path = "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home",
+        --     },
+        -- }
     elseif vim.fn.has('unix') == 1 then
         path.platform_config = jdtls_install .. '/config_linux'
     elseif vim.fn.has('win32') == 1 then
         path.platform_config = jdtls_install .. '/config_win'
     end
-
 
     path.bundles = {}
 
@@ -53,7 +62,6 @@ local function get_jdtls_paths()
         vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
         '\n'
     )
-
 
     if java_test_bundle[1] ~= '' then
         vim.list_extend(path.bundles, java_test_bundle)
@@ -75,7 +83,6 @@ local function get_jdtls_paths()
     end
 
 
-    -- using jenv to handle the directory java runtime
 
     cache_vars.paths = path
 
@@ -104,7 +111,7 @@ local function enable_debugger(bufnr)
     vim.keymap.set('n', '<leader>dn', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
 end
 
-local function jdtls_on_attach(client, buf)
+local function jdtls_on_attach(_, bufnr)
     if features.debugger then
         enable_debugger(bufnr)
     end
@@ -123,7 +130,7 @@ local function jdtls_on_attach(client, buf)
 
 end
 
-local function jdtls_setup(event)
+local function jdtls_setup()
     -- nvim-jdtls setup
 
     local jdtls = require("jdtls")
@@ -207,9 +214,9 @@ local function jdtls_setup(event)
           -- },
           format = {
             enabled = true,
-            -- settings = {
-            --   profile = 'asdf'
-            -- },
+            settings = {
+                url="/Users/tnoble/Documents/Atlas/Atlas_Code_Formatter.xml"
+            },
           }
         },
         signatureHelp = {
@@ -242,13 +249,6 @@ local function jdtls_setup(event)
           },
           useBlocks = true,
         },
-    }
-
-
-    local config = {
-        cmd = {''},
-        root_dir = jdtls.setup.find_root(root_files),
-        on_attach = jdtls.on_attach,
     }
 
     jdtls.start_or_attach({
