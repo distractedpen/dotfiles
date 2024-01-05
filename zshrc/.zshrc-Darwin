@@ -15,4 +15,4 @@ export ARCHFLAGS="-arch amd64"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # AEM Specific aliases
-alias buildAEM="mvn clean install -Padobe-public -PautoInstallPackage"
+alias buildAEM="mvn11 clean install -Padobe-public -PautoInstallPackage"
