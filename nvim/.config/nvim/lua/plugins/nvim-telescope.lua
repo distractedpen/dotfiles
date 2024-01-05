@@ -1,5 +1,23 @@
 
+
+local builtin = require('telescope.builtin')
+local configs = require('telescope.config')
+
+local vimgrep_args = { unpack(configs.values.vimgrep_arguments) }
+
+table.insert(vimgrep_args, "--hidden")
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/.git/*")
+
 require('telescope').setup({
+    defaults = {
+        vimgrep_arguments = vimgrep_args,
+    },
+    pickers = {
+        find_files = {
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+    },
     extensions = {
         fzf = {
             fuzzy = true,                      -- false will only do exact matching
@@ -14,9 +32,8 @@ require('telescope').setup({
 
 require('telescope').load_extension('fzf')
 
-local builtin = require('telescope.builtin')
-
 -- Keybindings
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files({hidden=true}) end, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
