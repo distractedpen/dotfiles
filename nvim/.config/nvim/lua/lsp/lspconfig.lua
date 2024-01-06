@@ -52,4 +52,30 @@ require('mason-lspconfig').setup_handlers({
         }
     end,
 
+    ["jdtls"] = function()
+        runtimes = {}
+        if (vim.fn.has('mac')) then
+            runtimes = {
+                {
+                    name = "JavaSE-11",
+                    path = "",
+                    default = false,
+                },
+                {
+                    name = "JavaSE-20",
+                    path = "",
+                    default = true,
+                }
+            }
+        end
+        require('lspconfig').jdtls.setup({
+            settings = {
+                java = {
+                    configuration = {
+                        runtimes = runtimes
+                    }
+                }
+            }
+        })
+    end,
 })

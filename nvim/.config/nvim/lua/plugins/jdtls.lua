@@ -1,6 +1,9 @@
 -- JDTLS Configuration
 
-local java_cmds = vim.api.nvim_create_augroup('java_cmds', {clear = true})
+-- nvim-java handles all configuration
+require('lspconfig').jdtls.setup({})
+
+--[[ local java_cmds = vim.api.nvim_create_augroup('java_cmds', {clear = true})
 local cache_vars = {}
 
 local root_files = {
@@ -269,4 +272,4 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'java' },
     desc = 'setup jdtls',
     callback = jdtls_setup,
-})
+}) ]]
