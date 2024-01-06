@@ -53,17 +53,22 @@ require('mason-lspconfig').setup_handlers({
     end,
 
     ["jdtls"] = function()
-        runtimes = {}
+        local runtimes = {}
         if (vim.fn.has('mac')) then
             runtimes = {
                 {
                     name = "JavaSE-11",
-                    path = "",
+                    path = "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home",
+                    default = false,
+                },
+                {
+                    name = "JavaSE-17",
+                    path = "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home",
                     default = false,
                 },
                 {
                     name = "JavaSE-20",
-                    path = "",
+                    path = "/Library/Java/JavaVirtualMachines/temurin-20.jdk/Contents/Home",
                     default = true,
                 }
             }
