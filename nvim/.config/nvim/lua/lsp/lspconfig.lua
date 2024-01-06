@@ -54,7 +54,7 @@ require('mason-lspconfig').setup_handlers({
 
     ["jdtls"] = function()
         local runtimes = {}
-        if (vim.fn.has('mac')) then
+        if vim.fn.has('mac') == 1 then
             runtimes = {
                 {
                     name = "JavaSE-11",
