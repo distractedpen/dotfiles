@@ -92,6 +92,7 @@ lazy.setup({
 
     -- FORMATTERS
     { "wesleimp/stylua.nvim" },
+    { "creativenull/efmls-configs-nvim" },
 
     -- Nvim Treesitter
     {

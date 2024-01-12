@@ -1,7 +1,5 @@
-
 -- Language Server Protocol Setup
 local on_attach = function(_, bufnr)
-
     local bufmap = function(keys, func)
         vim.keymap.set('n', keys, func, { buffer = bufnr })
     end
@@ -83,5 +81,26 @@ require('mason-lspconfig').setup_handlers({
                 }
             }
         })
+    end,
+
+
+    ["efm"] = function()
+        local languages = require('efmls-configs.defaults').languages()
+        local efmls_configs = {
+            filetypes = vim.tbl_keys(languages),
+            init_options = {
+                documentFormatting = true,
+                documentRangeFormatting = true
+            },
+            settings = {
+                rootMarkers = { ".git/" },
+                languages = languages,
+            }
+        }
+
+        require("lspconfig").efm.setup(vim.tbl_extend('force', efmls_configs, {
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }))
     end,
 })
