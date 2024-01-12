@@ -83,7 +83,7 @@ lazy.setup({
                 },
             } 
         },
-    },
+},
 
     -- Sonarlint for Java
     { url = "https://www.gitlab.com/schrieveslaach/sonarlint.nvim" },
@@ -117,6 +117,7 @@ lazy.setup({
             "hrsh7th/cmp-nvim-lsp",
         },
     },
+    { "rafamadriz/friendly-snippets" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
     { "hrsh7th/cmp-buffer" },
@@ -184,11 +185,13 @@ lazy.setup({
     -- Nvim Surround
     {
         "kylechui/nvim-surround",
-        tag = "*",
         config = function()
             require("nvim-surround").setup({})
         end
     },
+
+    -- Github Copilot
+    { "github/copilot.vim" }
 })
 
 -- Set the colorscheme to use catppuccin plugin
