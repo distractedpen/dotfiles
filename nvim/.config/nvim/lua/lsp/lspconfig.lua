@@ -26,6 +26,9 @@ local on_attach = function(_, bufnr)
 end
 
 
+-- Adding new filetypes for vim to handle 
+vim.filetype.add({ extension = { templ = 'templ', } })
+
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
