@@ -5,7 +5,8 @@ Last updated: 9 Dec 2023
 
 --]]
 
-
+-- Set the python3 provider
+vim.g.python3_host_prog = '/home/taylor/.py3nvim/bin/python3'
 
 -- Import Lua modules
 require('core/options')
