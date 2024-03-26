@@ -60,36 +60,6 @@ lazy.setup({
     { "williamboman/mason-lspconfig.nvim" },
     { "neovim/nvim-lspconfig" },
 
-    -- Special Java LSP handling
-    { "mfussenegger/nvim-jdtls" },
-    -- nvim-java
-    { 
-        'nvim-java/nvim-java',
-        dependencies = {
-            'nvim-java/lua-async-await',
-            'nvim-java/nvim-java-core',
-            'nvim-java/nvim-java-test',
-            'nvim-java/nvim-java-dap',
-            'MunifTanjim/nui.nvim',
-            'neovim/nvim-lspconfig',
-            'mfussenegger/nvim-dap',
-            {
-                'williamboman/mason.nvim',
-                opts = {
-                    registries = {
-                        'github:nvim-java/mason-registry',
-                        'github:mason-org/mason-registry',
-                    },
-                },
-            } 
-        },
-},
-
-    -- Sonarlint for Java
-    { url = "https://www.gitlab.com/schrieveslaach/sonarlint.nvim" },
-    -- Special C# Handling for Godot
-    { "Hoffs/omnisharp-extended-lsp.nvim" },
-
     -- FORMATTERS
     { "wesleimp/stylua.nvim" },
     { "creativenull/efmls-configs-nvim" },
@@ -135,28 +105,6 @@ lazy.setup({
     {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
-    },
-    -- Tree File Viewer
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("neo-tree").setup({
-                filesystem = {
-                    filtered_items = {
-                        never_show = {
-                            ".DS_Store",
-                            ".git",
-                        },
-                    },
-                },
-            })
-        end,
     },
 
     -- Git Integration
