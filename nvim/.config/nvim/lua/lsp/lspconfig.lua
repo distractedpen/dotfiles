@@ -1,5 +1,5 @@
 -- Language Server Protocol Setup
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     local bufmap = function(keys, func)
         vim.keymap.set('n', keys, func, { buffer = bufnr })
     end
@@ -23,6 +23,18 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
     end, {})
+
+    -- conditonal options per lsp
+    local rc = client.resolved_capabilities
+    if client.name == 'pyright' then
+        rc.hover = false
+    end
+
+    if client.name == 'pylsp' then
+        rc.rename = false
+        rc.signature_help = false
+    end
+
 end
 
 
@@ -39,6 +51,53 @@ require('mason-lspconfig').setup_handlers({
         require("lspconfig")[server_name].setup {
             on_attach = on_attach,
             capabilities = capabilities
+        }
+    end,
+
+    ["pyright"] = function()
+        require('lspconfig').pyright.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                python = {
+                    analysis = {
+                        useLibraryCodeForTypes = true,
+                        diagnosticSeverityOverrides = {
+                            reportGeneralTypeIssues = "none",
+                            reportOptionalMemberAccess = "none",
+                            reportOptionalSubscript = "none",
+                            reportPrivateImportUsage = "none",
+                        },
+                        autoImportCompletions = false,
+                    },
+                    linting = {
+                        pylintEnabled = false,
+                    }
+                }
+            },
+        }
+    end,
+
+    ["pylsp"] = function()
+        require('lspconfig').pylsp.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                pylsp = {
+                    builtin = {
+                        installExtraArgs = { "flake8", 'pylint', 'pycodestyle'},
+                    },
+                    plugins = {
+                        jedi_completion = { enabled = false },
+                        rope_completion = { enabled = false },
+                        pycodestyle = {
+                            maxLineLength = 99,
+                        },
+                        pyflakes = { enabled = false },
+                        flake8 = { enabled = false },
+                    }
+                }
+            }
         }
     end,
 
