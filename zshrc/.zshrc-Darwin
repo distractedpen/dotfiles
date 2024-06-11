@@ -1,18 +1,26 @@
 # MacOS Specific .zshrc configuration
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.jenv/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/share/dotnet:$HOME/.dotnet/tools:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 # setup homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)" 
 # setup pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
+
 # setup jenv
+export JENV_ROOT="$HOME/.jenv"
+export PATH=$JENV_ROOT/bin:$PATH
 eval "$(jenv init -)"
 
+
 # Compilation flags
-export ARCHFLAGS="-arch amd64"
+export ARCHFLAGS="-arch arm64"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# AEM Specific aliases
-alias buildAEM="mvn11 clean install -Padobe-public -PautoInstallPackage"
+export ATTDBTYPE="Mongo"
+export ATTDBHOST="localhost"
+export ATTDBPORT=27017
+export ATTDBKEY=""
