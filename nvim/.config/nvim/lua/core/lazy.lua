@@ -41,6 +41,9 @@ lazy.setup({
         lazy = false,
     },
 
+    { "rebelot/kanagawa.nvim" },
+    { "Shatur/neovim-ayu" },
+
     -- Lualine
     {
         "nvim-lualine/lualine.nvim",
@@ -94,7 +97,7 @@ lazy.setup({
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     -- Neodev for code completion inside neovim configuration files
-    { "folke/neodev.nvim", opts = {} },
+    { "folke/neodev.nvim",                  opts = {} },
 
     -- Telescope Funny Finder
     {
@@ -106,6 +109,10 @@ lazy.setup({
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
     },
+
+
+    -- Telescope UI select
+    { "nvim-telescope/telescope-ui-select.nvim" },
 
     -- Git Integration
     { "tpope/vim-fugitive" },
@@ -123,10 +130,10 @@ lazy.setup({
             "TmuxNavigatePrevious",
         },
         keys = {
-            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
     },
@@ -138,10 +145,38 @@ lazy.setup({
             require("nvim-surround").setup({})
         end
     },
+    -- File Explorer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+            "3rd/image.nvim",
+        }
+    },
 
-    -- Github Copilot
-    { "github/copilot.vim" }
+    { 'Hoffs/omnisharp-extended-lsp.nvim' },
+
+    -- Java Setup
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
+    },
+    -- {
+    --     'nvimdev/lspsaga.nvim',
+    --     config = function()
+    --         require('lspsaga').setup({})
+    --     end,
+    --     dependencies = {
+    --         'nvim-treesitter/nvim-treesitter', -- optional
+    --         'nvim-tree/nvim-web-devicons',     -- optional
+    --     },
+    -- },
+    { "mfussenegger/nvim-jdtls" },
 })
 
--- Set the colorscheme to use catppuccin plugin
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme("kanagawa-dragon")

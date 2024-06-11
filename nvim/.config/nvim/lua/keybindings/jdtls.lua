@@ -1,0 +1,32 @@
+-- Create a command `:Format` local to the LSP buffer
+vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+  vim.lsp.buf.format()
+end, { desc = "Format current buffer with LSP" })
+
+-- vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "[G]oto [R]eferences - Java", expr = true, silent = true })
+-- vim.keymap.set("n","gr", require("telescope.builtin").lsp_references,{ desc = "[G]oto [R]eferences" })
+-- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "" })
+-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "" })
+-- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "" })
+-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "" })
+-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "" })
+-- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { desc = "" })
+-- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { desc = "" })
+-- vim.keymap.set('n', '<leader>wl', print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', { desc = "" })
+-- vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { desc = "" })
+-- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "" })
+-- vim.keymap.set('n', 'gr', vim.lsp.buf.references() && vim.cmd("copen")<CR>', { desc = "" })
+-- vim.keymap.set('n', '<leader>e', vim.lsp.diagnostic.show_line_diagnostics, { desc = "" })
+-- vim.keymap.set('n', '[d', vim.lsp.diagnostic.goto_prev, { desc = "" })
+-- vim.keymap.set('n', ']d', vim.lsp.diagnostic.goto_next, { desc = "" })
+-- vim.keymap.set('n', '<leader>q', vim.lsp.diagnostic.set_loclist, { desc = "" })
+
+-- -- Java specific
+-- vim.keymap.set("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "" })
+-- vim.keymap.set("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", { desc = "" })
+-- vim.keymap.set("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", { desc = "" })
+-- vim.keymap.set("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", { desc = "" })
+-- vim.keymap.set("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "" })
+-- vim.keymap.set("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { desc = "" })
+--
+-- vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", { desc = "" })

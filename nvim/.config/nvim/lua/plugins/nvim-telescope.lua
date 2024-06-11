@@ -25,12 +25,17 @@ require('telescope').setup({
             override_file_sorter = true,        -- override the file sorter
             case_mode = "smart_case",           -- or 'ignore_case' or 'respect_case'
                                                 -- default case is 'smart_case
+        },
+
+        ['ui-select'] = {
+            require("telescope.themes").get_dropdown {}
         }
     }
 })
 
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('ui-select')
 
 -- Keybindings
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})

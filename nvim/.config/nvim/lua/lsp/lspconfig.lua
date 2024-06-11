@@ -7,11 +7,11 @@ local on_attach = function(client, bufnr)
 
     bufmap('<leader>r', vim.lsp.buf.rename)
     bufmap('<leader>a', vim.lsp.buf.code_action)
-
     bufmap('gd', vim.lsp.buf.definition)
     bufmap('gD', vim.lsp.buf.declaration)
     bufmap('gI', vim.lsp.buf.implementation)
     bufmap('<leader>D', vim.lsp.buf.type_definition)
+    bufmap('<leader>hh', vim.lsp.buf.signature_help)
 
     bufmap('gr', require('telescope.builtin').lsp_references)
     bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
@@ -113,39 +113,6 @@ require('mason-lspconfig').setup_handlers({
         }
     end,
 
-    ["jdtls"] = function()
-        local runtimes = {}
-        if vim.fn.has('mac') == 1 then
-            runtimes = {
-                {
-                    name = "JavaSE-11",
-                    path = "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home",
-                    default = false,
-                },
-                {
-                    name = "JavaSE-17",
-                    path = "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home",
-                    default = false,
-                },
-                {
-                    name = "JavaSE-20",
-                    path = "/Library/Java/JavaVirtualMachines/temurin-20.jdk/Contents/Home",
-                    default = true,
-                }
-            }
-        end
-        require('lspconfig').jdtls.setup({
-            settings = {
-                java = {
-                    configuration = {
-                        runtimes = runtimes
-                    }
-                }
-            }
-        })
-    end,
-
-
     ["efm"] = function()
         local languages = require('efmls-configs.defaults').languages()
         local efmls_configs = {
@@ -164,5 +131,23 @@ require('mason-lspconfig').setup_handlers({
             on_attach = on_attach,
             capabilities = capabilities,
         }))
+    end,
+
+
+    ["omnisharp"] = function()
+        require('lspconfig').omnisharp.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp" },
+            handlers = {
+                ["textDocument/definition"] = require("omnisharp_extended").handler,
+            },
+            enable_editorconfig_support = true,
+            enable_ms_build_load_projects_on_demand = false,
+            enable_roslyn_analyzers = true,
+            organize_imports_on_format = true,
+            enable_import_completion = true,
+            sdk_include_prereleases = true,
+        })
     end,
 })
