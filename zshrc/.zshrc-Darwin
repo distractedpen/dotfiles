@@ -2,6 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/share/dotnet:$HOME/.dotnet/tools:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin/flutter/bin:$PATH
 
 # setup homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)" 
@@ -14,13 +15,7 @@ export JENV_ROOT="$HOME/.jenv"
 export PATH=$JENV_ROOT/bin:$PATH
 eval "$(jenv init -)"
 
-
 # Compilation flags
 export ARCHFLAGS="-arch arm64"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export ATTDBTYPE="Mongo"
-export ATTDBHOST="localhost"
-export ATTDBPORT=27017
-export ATTDBKEY=""
