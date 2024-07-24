@@ -36,5 +36,10 @@ alias nvimconfig="cd ~/.config/nvim"
 
 source "$HOME/.zshrc-`uname`"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# Source local env secrets file.
+if [ -f "$HOME/.zshrc-env" ]; then
+    source "$HOME/.zshrc-env"
+else
+    echo ".zshrc-env not found."
+fi
 
