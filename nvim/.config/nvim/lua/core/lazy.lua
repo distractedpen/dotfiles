@@ -22,8 +22,14 @@ if not status_ok then
     return
 end
 
+-- include installed luarocks in package path
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
+
+
 -- Start setup
 lazy.setup({
+
     -- Shortcut to comment out lines
     {
         "numToStr/Comment.nvim",
@@ -34,15 +40,21 @@ lazy.setup({
     },
 
     -- Catpuccin color Scheme
+    -- {
+    --     "catppuccin/nvim",
+    --     name = "catppuccin",
+    --     priority = 1000,
+    --     lazy = false,
+    -- },
+
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        lazy = false,
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000 ,
+        config = true,
     },
 
-    { "rebelot/kanagawa.nvim" },
-    { "Shatur/neovim-ayu" },
+    -- { "rebelot/kanagawa.nvim" },
+    -- { "Shatur/neovim-ayu" },
 
     -- Lualine
     {
@@ -96,8 +108,9 @@ lazy.setup({
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
+
     -- Neodev for code completion inside neovim configuration files
-    { "folke/neodev.nvim",                  opts = {} },
+    { "folke/neodev.nvim", opts = {} },
 
     -- Telescope Funny Finder
     {
@@ -157,6 +170,7 @@ lazy.setup({
         }
     },
 
+    -- C# Setup
     { 'Hoffs/omnisharp-extended-lsp.nvim' },
 
     -- Java Setup
@@ -166,17 +180,23 @@ lazy.setup({
         opts = {},
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
+    { "mfussenegger/nvim-jdtls" },
+
+    -- Data Science
+    {"kassio/neoterm"},
+    {"benlubas/molten-nvim"},
     -- {
-    --     'nvimdev/lspsaga.nvim',
-    --     config = function()
-    --         require('lspsaga').setup({})
-    --     end,
-    --     dependencies = {
-    --         'nvim-treesitter/nvim-treesitter', -- optional
-    --         'nvim-tree/nvim-web-devicons',     -- optional
+    --     "vhyrro/luarocks.nvim",
+    --     priority = 1001,
+    --     opts = {
+    --         rocks = { "magick" },
     --     },
     -- },
-    { "mfussenegger/nvim-jdtls" },
+    {
+        "3rd/image.nvim",
+        -- dependencies = { "luarocks.nvim" },
+    }
 })
 
-vim.cmd.colorscheme("kanagawa-dragon")
+vim.cmd.colorscheme("gruvbox")
+
