@@ -184,7 +184,6 @@ lazy.setup({
 
     -- Data Science
     {"kassio/neoterm"},
-    {"benlubas/molten-nvim"},
     {
         "vhyrro/luarocks.nvim",
         priority = 1001,
@@ -196,7 +195,14 @@ lazy.setup({
     {
         "3rd/image.nvim",
         dependencies = { "luarocks.nvim" },
-    }
+        version = "1.1.0"
+    },
+    {
+        "benlubas/molten-nvim",
+        version = "^1.0.0",
+        dependencies = { "3rd/image.nvim" },
+        build = ":UpdateRemotePlugins",
+    },
 })
 
 vim.cmd.colorscheme("gruvbox")
