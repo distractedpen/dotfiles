@@ -23,8 +23,8 @@ if not status_ok then
 end
 
 -- include installed luarocks in package path
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
+-- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
+-- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
 
 
 -- Start setup
@@ -49,7 +49,7 @@ lazy.setup({
 
     {
         "ellisonleao/gruvbox.nvim",
-        priority = 1000 ,
+        priority = 1000,
         config = true,
     },
 
@@ -185,16 +185,16 @@ lazy.setup({
     -- Data Science
     {"kassio/neoterm"},
     {"benlubas/molten-nvim"},
-    -- {
-    --     "vhyrro/luarocks.nvim",
-    --     priority = 1001,
-    --     opts = {
-    --         rocks = { "magick" },
-    --     },
-    -- },
+    {
+        "vhyrro/luarocks.nvim",
+        priority = 1001,
+        opts = {
+            rocks = { "magick" },
+        },
+    },
     {
         "3rd/image.nvim",
-        -- dependencies = { "luarocks.nvim" },
+        dependencies = { "luarocks.nvim" },
     }
 })
 
