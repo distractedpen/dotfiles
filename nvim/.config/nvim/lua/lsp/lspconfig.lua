@@ -150,4 +150,14 @@ require('mason-lspconfig').setup_handlers({
             sdk_include_prereleases = true,
         })
     end,
+
+    ["tailwindcss"] = function()
+        require('lspconfig').tailwindcss.setup({
+            -- capabilities = capabilities,
+            -- on_attach = on_attach,
+            -- settings = {
+            -- },
+        })
+    end,
+
 })

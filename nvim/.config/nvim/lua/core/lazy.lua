@@ -203,6 +203,15 @@ lazy.setup({
         dependencies = { "3rd/image.nvim" },
         build = ":UpdateRemotePlugins",
     },
+    {
+        "R-nvim/R.nvim",
+        lazy = false,
+        dependencies = {
+           "R-vim/cmp-r",     
+        }
+    },
+    { "R-nvim/cmp-r" },
+
 })
 
 vim.cmd.colorscheme("gruvbox")
