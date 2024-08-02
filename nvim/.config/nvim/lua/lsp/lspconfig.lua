@@ -24,15 +24,14 @@ local on_attach = function(client, bufnr)
         vim.lsp.buf.format()
     end, {})
 
-    -- conditonal options per lsp
-    local rc = client.resolved_capabilities
+    local c = client.capabilities
     if client.name == 'pyright' then
-        rc.hover = false
+        c.hover = false
     end
 
     if client.name == 'pylsp' then
-        rc.rename = false
-        rc.signature_help = false
+        c.rename = false
+        c.signature_help = false
     end
 
 end
@@ -115,6 +114,16 @@ require('mason-lspconfig').setup_handlers({
 
     ["efm"] = function()
         local languages = require('efmls-configs.defaults').languages()
+
+        -- additional formatters and linters
+        -- local jq = require("efmls-configs.formatters.jq")
+        local prettier = require("efmls-configs.formatters.prettier")
+        local jq = require("efmls-configs.linters.jq")
+        languages = vim.tbl_extend('force', languages, {
+         json = { jq, prettier },
+        })
+        --
+
         local efmls_configs = {
             filetypes = vim.tbl_keys(languages),
             init_options = {
