@@ -15,7 +15,8 @@ if vim.env.R_AUTO_START == "true" then
     opts.objbr_auto_start = true
 end
 
-vim.api.nvim_buf_set_keymap(0, "n", "<leader>rl<Enter>", "<Plug>RDSendLine", {})
-vim.api.nvim_buf_set_keymap(0, "v", "<leader>rs<Enter>", "<Plug>RSendSelection", {})
+
+vim.keymap.set("n", "<Enter>", "<Plug>RDSendLine", {})
+vim.keymap.set("v", "<Enter>", "<Plug>RSendSelection", {})
 
 require("r").setup(opts)
