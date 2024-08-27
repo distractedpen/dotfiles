@@ -107,6 +107,14 @@ lazy.setup({
             "hrsh7th/cmp-nvim-lsp",
         },
     },
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
     { "rafamadriz/friendly-snippets" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
@@ -114,7 +122,7 @@ lazy.setup({
     { "hrsh7th/cmp-path" },
 
     -- Neodev for code completion inside neovim configuration files
-    { "folke/neodev.nvim", opts = {} },
+    { "folke/neodev.nvim",                  opts = {} },
 
     -- Telescope Funny Finder
     {
@@ -187,7 +195,7 @@ lazy.setup({
     { "mfussenegger/nvim-jdtls" },
 
     -- Data Science
-    {"kassio/neoterm"},
+    { "kassio/neoterm" },
     {
         "vhyrro/luarocks.nvim",
         priority = 1001,
@@ -211,7 +219,7 @@ lazy.setup({
         "R-nvim/R.nvim",
         lazy = false,
         dependencies = {
-           "R-vim/cmp-r",     
+            "R-vim/cmp-r",
         }
     },
     { "R-nvim/cmp-r" },
@@ -219,4 +227,3 @@ lazy.setup({
 })
 
 vim.cmd.colorscheme("gruvbox")
-

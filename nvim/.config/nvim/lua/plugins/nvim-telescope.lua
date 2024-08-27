@@ -1,5 +1,3 @@
-
-
 local builtin = require('telescope.builtin')
 local configs = require('telescope.config')
 
@@ -15,16 +13,21 @@ require('telescope').setup({
     },
     pickers = {
         find_files = {
-            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" , "--glob", "!**/node_modules/*" },
+            find_command = {
+                "rg", "--files", "--hidden",
+                "--glob", "!**/.git/*",
+                "--glob", "!**/node_modules/*",
+                "--glob", "!**/.venv/*",
+            },
         },
     },
     extensions = {
         fzf = {
-            fuzzy = true,                      -- false will only do exact matching
-            override_generic_sorter = true,     -- override the generic sorter
-            override_file_sorter = true,        -- override the file sorter
-            case_mode = "smart_case",           -- or 'ignore_case' or 'respect_case'
-                                                -- default case is 'smart_case
+            fuzzy = true,                   -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or 'ignore_case' or 'respect_case'
+            -- default case is 'smart_case
         },
 
         ['ui-select'] = {

@@ -90,7 +90,7 @@ require('mason-lspconfig').setup_handlers({
                         jedi_completion = { enabled = false },
                         rope_completion = { enabled = false },
                         pycodestyle = {
-                            maxLineLength = 99,
+                            maxLineLength = 120,
                         },
                         pyflakes = { enabled = false },
                         flake8 = { enabled = false },
