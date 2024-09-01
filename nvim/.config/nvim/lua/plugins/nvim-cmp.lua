@@ -10,6 +10,9 @@ if not luasnip_status_ok then
     return
 end
 
+-- Setup 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 cmp.setup({
     -- Load snippet support
     snippet = {
@@ -46,7 +49,8 @@ cmp.setup({
         { name = 'path' },
         { name = 'buffer' },
         { name = "cmp_r" },
-    }, {
+        -- { name = 'friendly_snippit' },
+}, {
         { name = 'buffer' },
     }),
 })
