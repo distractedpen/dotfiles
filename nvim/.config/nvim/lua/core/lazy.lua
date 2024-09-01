@@ -190,7 +190,7 @@ lazy.setup({
     {"kassio/neoterm"},
     {
         "vhyrro/luarocks.nvim",
-        priority = 1001,
+        priority = 1101,
         config = true,
         opts = {
             rocks = { "magick" },

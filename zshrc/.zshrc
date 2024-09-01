@@ -33,6 +33,7 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias vim="nvim"
 alias da="ls -la"
 alias nvimconfig="cd ~/.config/nvim"
+alias cls="clear"
 
 source "$HOME/.zshrc-`uname`"
 
