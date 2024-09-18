@@ -40,21 +40,21 @@ lazy.setup({
     },
 
     -- Catpuccin color Scheme
-    -- {
-    --     "catppuccin/nvim",
-    --     name = "catppuccin",
-    --     priority = 1000,
-    --     lazy = false,
-    -- },
-
     {
-        "ellisonleao/gruvbox.nvim",
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
-        config = true,
+        lazy = false,
+        config = function()
+                require("catppuccin").setup({
+                cmp = true,
+                gitsigns = true,
+                nvimtree = true,
+                treesitter = true,
+                notify = true,
+            })
+        end
     },
-
-    -- { "rebelot/kanagawa.nvim" },
-    -- { "Shatur/neovim-ayu" },
 
     -- Lualine
     {
@@ -65,7 +65,7 @@ lazy.setup({
         config = function()
             require("lualine").setup({
                 icons_enabled = true,
-                theme = "ayu",
+                theme = "catppuccin",
             })
         end,
     },
@@ -193,37 +193,6 @@ lazy.setup({
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
     { "mfussenegger/nvim-jdtls" },
-
-    -- Data Science
-    { "kassio/neoterm" },
-    {
-        "vhyrro/luarocks.nvim",
-        priority = 1101,
-        config = true,
-        opts = {
-            rocks = { "magick" },
-        },
-    },
-    {
-        "3rd/image.nvim",
-        dependencies = { "luarocks.nvim" },
-        version = "1.1.0"
-    },
-    {
-        "benlubas/molten-nvim",
-        version = "^1.0.0",
-        dependencies = { "3rd/image.nvim" },
-        build = ":UpdateRemotePlugins",
-    },
-    {
-        "R-nvim/R.nvim",
-        lazy = false,
-        dependencies = {
-            "R-vim/cmp-r",
-        }
-    },
-    { "R-nvim/cmp-r" },
-
 })
 
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("catppuccin")

@@ -9,6 +9,7 @@ export PATH=/usr/local/go/bin/:$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export PATH=$NVIM_HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin/zig:$PATH
 
 # Load pyenv automatically by adding
 eval "$(pyenv init -)"
