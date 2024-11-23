@@ -22,11 +22,6 @@ if not status_ok then
     return
 end
 
--- include installed luarocks in package path
--- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
--- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
-
-
 -- Start setup
 lazy.setup({
 
@@ -122,7 +117,10 @@ lazy.setup({
     { "hrsh7th/cmp-path" },
 
     -- Neodev for code completion inside neovim configuration files
-    { "folke/neodev.nvim",                  opts = {} },
+    { 
+        "folke/neodev.nvim",
+        opts = {} 
+    },
 
     -- Telescope Funny Finder
     {
@@ -134,7 +132,6 @@ lazy.setup({
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
     },
-
 
     -- Telescope UI select
     { "nvim-telescope/telescope-ui-select.nvim" },
@@ -181,18 +178,6 @@ lazy.setup({
             "3rd/image.nvim",
         }
     },
-
-    -- C# Setup
-    { 'Hoffs/omnisharp-extended-lsp.nvim' },
-
-    -- Java Setup
-    {
-        "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
-        opts = {},
-        config = function(_, opts) require 'lsp_signature'.setup(opts) end
-    },
-    { "mfussenegger/nvim-jdtls" },
 })
 
 vim.cmd.colorscheme("catppuccin")

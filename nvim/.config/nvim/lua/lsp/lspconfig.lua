@@ -112,6 +112,22 @@ require('mason-lspconfig').setup_handlers({
         }
     end,
 
+    ["gopls"] = function()
+        require('lspconfig').gopls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                    gofumpt = true,
+                }
+            }
+        }
+    end,
+
     ["efm"] = function()
         local languages = require('efmls-configs.defaults').languages()
 
@@ -121,6 +137,7 @@ require('mason-lspconfig').setup_handlers({
         local jq = require("efmls-configs.linters.jq")
         languages = vim.tbl_extend('force', languages, {
          json = { jq, prettier },
+         html = { prettier },
         })
         --
 
@@ -141,32 +158,4 @@ require('mason-lspconfig').setup_handlers({
             capabilities = capabilities,
         }))
     end,
-
-
-    ["omnisharp"] = function()
-        require('lspconfig').omnisharp.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            cmd = { vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp" },
-            handlers = {
-                ["textDocument/definition"] = require("omnisharp_extended").handler,
-            },
-            enable_editorconfig_support = true,
-            enable_ms_build_load_projects_on_demand = false,
-            enable_roslyn_analyzers = true,
-            organize_imports_on_format = true,
-            enable_import_completion = true,
-            sdk_include_prereleases = true,
-        })
-    end,
-
-    ["tailwindcss"] = function()
-        require('lspconfig').tailwindcss.setup({
-            -- capabilities = capabilities,
-            -- on_attach = on_attach,
-            -- settings = {
-            -- },
-        })
-    end,
-
 })
