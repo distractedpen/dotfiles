@@ -10,6 +10,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export PATH=$NVIM_HOME/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/bin/zig:$PATH
+export PATH=$HOME/bin/apache-maven-3.9.9/bin:$PATH
 
 # Load pyenv automatically by adding
 eval "$(pyenv init -)"
