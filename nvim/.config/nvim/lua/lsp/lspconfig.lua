@@ -4,7 +4,6 @@ local on_attach = function(client, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr })
     end
 
-
     bufmap('<leader>r', vim.lsp.buf.rename)
     bufmap('<leader>a', vim.lsp.buf.code_action)
     bufmap('gd', vim.lsp.buf.definition)
@@ -20,7 +19,7 @@ local on_attach = function(client, bufnr)
 
     bufmap('K', vim.lsp.buf.hover)
 
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    vim.api.nvim_buf_create_user_command(bufnr, 'F', function(_)
         vim.lsp.buf.format()
     end, {})
 
@@ -40,8 +39,7 @@ end
 -- Adding new filetypes for vim to handle 
 vim.filetype.add({ extension = { templ = 'templ', } })
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 require('mason').setup()
 require('mason-lspconfig').setup_handlers({
@@ -128,34 +126,34 @@ require('mason-lspconfig').setup_handlers({
         }
     end,
 
-    ["efm"] = function()
-        local languages = require('efmls-configs.defaults').languages()
-
-        -- additional formatters and linters
-        -- local jq = require("efmls-configs.formatters.jq")
-        local prettier = require("efmls-configs.formatters.prettier")
-        local jq = require("efmls-configs.linters.jq")
-        languages = vim.tbl_extend('force', languages, {
-         json = { jq, prettier },
-         html = { prettier },
-        })
-        --
-
-        local efmls_configs = {
-            filetypes = vim.tbl_keys(languages),
-            init_options = {
-                documentFormatting = true,
-                documentRangeFormatting = true
-            },
-            settings = {
-                rootMarkers = { ".git/" },
-                languages = languages,
-            }
-        }
-
-        require("lspconfig").efm.setup(vim.tbl_extend('force', efmls_configs, {
-            on_attach = on_attach,
-            capabilities = capabilities,
-        }))
-    end,
+    -- ["efm"] = function()
+    --     local languages = require('efmls-configs.defaults').languages()
+    --
+    --     -- additional formatters and linters
+    --     -- local jq = require("efmls-configs.formatters.jq")
+    --     local prettier = require("efmls-configs.formatters.prettier")
+    --     local jq = require("efmls-configs.linters.jq")
+    --     languages = vim.tbl_extend('force', languages, {
+    --      json = { jq, prettier },
+    --      html = { prettier },
+    --     })
+    --     --
+    --
+    --     local efmls_configs = {
+    --         filetypes = vim.tbl_keys(languages),
+    --         init_options = {
+    --             documentFormatting = true,
+    --             documentRangeFormatting = true
+    --         },
+    --         settings = {
+    --             rootMarkers = { ".git/" },
+    --             languages = languages,
+    --         }
+    --     }
+    --
+    --     require("lspconfig").efm.setup(vim.tbl_extend('force', efmls_configs, {
+    --         on_attach = on_attach,
+    --         capabilities = capabilities,
+    --     }))
+    -- end,
 })
