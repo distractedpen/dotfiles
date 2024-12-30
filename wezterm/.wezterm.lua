@@ -30,7 +30,7 @@ config.keys = {
     {
         key = '\'',
         mods = 'LEADER',
-        action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+        action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
     },
     {
         key = 'H',
