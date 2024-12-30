@@ -7,11 +7,51 @@ local config = wezterm.config_builder()
 -- Config
 config.color_scheme = 'catppuccin-mocha'
 config.window_background_opacity = 0.6
-config.text_background_opacity = 0.6
+config.text_background_opacity = 0.7
 
--- update arrow key keybinds to hjkl
-config.leader = { key = ' ', mods = 'CTRL' }
+config.leader = { key = ' ', mods = 'SHIFT' }
+config.disable_default_key_bindings = true
 config.keys = {
+    {
+        key = "D",
+        mods = 'LEADER',
+        action = wezterm.action.ShowDebugOverlay
+    },
+    {
+        key = "P",
+        mods = 'LEADER',
+        action = wezterm.action.ActivateCommandPalette
+    },
+    {
+        key = '%',
+        mods = 'LEADER',
+        action = wezterm.action.SplitHorizontal { domain= 'CurrentPaneDomain' }
+    },
+    {
+        key = '\'',
+        mods = 'LEADER',
+        action = wezterm.action.SplitHorizontal { domain= 'CurrentPaneDomain' }
+    },
+    {
+        key = 'h',
+        mods = 'LEADER',
+        action = wezterm.action.ActivePaneDirection { 'Left' }
+    },
+    {
+        key = 'j',
+        mods = 'LEADER',
+        action = wezterm.action.ActivePaneDirection { 'Down' }
+    },
+    {
+        key = 'k',
+        mods = 'LEADER',
+        action = wezterm.action.ActivePaneDirection { 'Up' }
+    },
+    {
+        key = 'l',
+        mods = 'LEADER',
+        action = wezterm.action.ActivePaneDirection { 'Right' }
+    },
     {
         key = 'h',
         mods = 'LEADER',
