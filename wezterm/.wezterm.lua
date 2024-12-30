@@ -35,17 +35,17 @@ config.keys = {
     {
         key = 'h',
         mods = 'LEADER',
-        action = wezterm.action.ActivePaneDirection { 'Left' }
+        action = wezterm.action.ActivatePaneDirection { 'Left' }
     },
     {
         key = 'j',
         mods = 'LEADER',
-        action = wezterm.action.ActivePaneDirection { 'Down' }
+        action = wezterm.action.ActivatePaneDirection { 'Down' }
     },
     {
         key = 'k',
         mods = 'LEADER',
-        action = wezterm.action.ActivePaneDirection { 'Up' }
+        action = wezterm.action.ActivatePaneDirection { 'Up' }
     },
     {
         key = 'l',
