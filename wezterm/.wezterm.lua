@@ -50,7 +50,7 @@ config.keys = {
     {
         key = 'l',
         mods = 'LEADER',
-        action = wezterm.action { ActivePaneDirection = 'Right' }
+        action = wezterm.action { ActivatePaneDirection = 'Right' }
     },
     {
         key = 'h',
