@@ -33,22 +33,22 @@ config.keys = {
         action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
     {
-        key = 'h',
+        key = 'H',
         mods = 'LEADER',
         action = wezterm.action { ActivatePaneDirection = 'Left' }
     },
     {
-        key = 'j',
+        key = 'J',
         mods = 'LEADER',
         action = wezterm.action { ActivatePaneDirection = 'Down' }
     },
     {
-        key = 'k',
+        key = 'K',
         mods = 'LEADER',
         action = wezterm.action { ActivatePaneDirection = 'Up' }
     },
     {
-        key = 'l',
+        key = 'L',
         mods = 'LEADER',
         action = wezterm.action { ActivatePaneDirection = 'Right' }
     },
