@@ -41,7 +41,7 @@ lazy.setup({
         priority = 1000,
         lazy = false,
         config = function()
-                require("catppuccin").setup({
+            require("catppuccin").setup({
                 cmp = true,
                 gitsigns = true,
                 nvimtree = true,
@@ -67,13 +67,15 @@ lazy.setup({
 
     -- LSP Server Configuration
     { "rafamadriz/friendly-snippets" },
-    { "saghen/blink.cmp", 
-     dependencies = { "rafamadriz/friendly-snippets" },
-     version = "*",
+    {
+        "saghen/blink.cmp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        version = "*",
     },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
-    { "neovim/nvim-lspconfig",
+    {
+        "neovim/nvim-lspconfig",
         dependencies = { "saghen/blink.cmp" }
     },
     {
@@ -85,9 +87,24 @@ lazy.setup({
     },
 
     -- Neodev for code completion inside neovim configuration files
-    { 
+    {
         "folke/neodev.nvim",
-        opts = {} 
+        opts = {}
+    },
+
+    {
+        "mfussenegger/nvim-dap",
+    },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    },
+    -- Go Delve DAP Configuration
+    {
+        "leoluz/nvim-dap-go"
     },
 
     -- FORMATTERS
@@ -160,13 +177,13 @@ lazy.setup({
 
     -- Oil.nvim File Explorer Buffer
     {
-      'stevearc/oil.nvim',
-      ---@module 'oil'
-      ---@type oil.SetupOpts
-      opts = {},
-      -- Optional dependencies
-      -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-      dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     }
 
 

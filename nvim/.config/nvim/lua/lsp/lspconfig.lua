@@ -32,11 +32,10 @@ local on_attach = function(client, bufnr)
         c.rename = false
         c.signature_help = false
     end
-
 end
 
 
--- Adding new filetypes for vim to handle 
+-- Adding new filetypes for vim to handle
 vim.filetype.add({ extension = { templ = 'templ', } })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -82,7 +81,7 @@ require('mason-lspconfig').setup_handlers({
             settings = {
                 pylsp = {
                     builtin = {
-                        installExtraArgs = { "flake8", 'pylint', 'pycodestyle'},
+                        installExtraArgs = { "flake8", 'pylint', 'pycodestyle' },
                     },
                     plugins = {
                         jedi_completion = { enabled = false },
@@ -156,4 +155,8 @@ require('mason-lspconfig').setup_handlers({
     --         capabilities = capabilities,
     --     }))
     -- end,
+})
+require("mason-nvim-dap").setup({
+    ensure_installed = { "python", "delve" },
+    handlers = {}
 })
