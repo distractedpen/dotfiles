@@ -125,6 +125,14 @@ require('mason-lspconfig').setup_handlers({
         }
     end,
 
+    ['jdtls'] = function()
+        require('lspconfig').jdtls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+    end,
+
+
     -- ["efm"] = function()
     --     local languages = require('efmls-configs.defaults').languages()
     --
