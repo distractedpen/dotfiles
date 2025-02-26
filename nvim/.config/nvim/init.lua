@@ -1,7 +1,7 @@
 --[[
 
 Neovim init file
-Last updated: 23 Nov 2024
+Last updated: 25 Dec 2024
 
 --]]
 
@@ -12,8 +12,12 @@ vim.g.python3_host_prog = '/home/taylor/.py3nvim/bin/python3'
 require('core/options')
 require('core/lazy')
 require('lsp/lspconfig')
+require('plugins/nvim-dap')
+require('plugins/nvim-dap-go')
+require('plugins/nvim-oil')
+require('plugins/nvim-neodev')
+require('plugins/nvim-blink')
 require('plugins/nvim-treesitter')
-require('plugins/nvim-cmp')
 require('plugins/nvim-telescope')
 require('plugins/nvim-harpoon')
 require('plugins/nvim-neotree')

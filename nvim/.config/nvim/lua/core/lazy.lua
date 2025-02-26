@@ -34,23 +34,6 @@ lazy.setup({
         lazy = false,
     },
 
-    -- Catpuccin color Scheme
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        lazy = false,
-        config = function()
-            require("catppuccin").setup({
-                cmp = true,
-                gitsigns = true,
-                nvimtree = true,
-                treesitter = true,
-                notify = true,
-            })
-        end
-    },
-
     -- Lualine
     {
         "nvim-lualine/lualine.nvim",
@@ -66,9 +49,47 @@ lazy.setup({
     },
 
     -- LSP Server Configuration
+    { "rafamadriz/friendly-snippets" },
+    {
+        "saghen/blink.cmp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        version = "*",
+    },
+
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
-    { "neovim/nvim-lspconfig" },
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = { "saghen/blink.cmp" }
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release. version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
+
+    -- Neodev for code completion inside neovim configuration files
+    {
+        "folke/neodev.nvim",
+        opts = {}
+    },
+
+    {
+        "mfussenegger/nvim-dap",
+    },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"  },
+    },
+    -- Go Delve DAP Configuration
+    {
+        "leoluz/nvim-dap-go"
+    },
 
     -- FORMATTERS
     { "wesleimp/stylua.nvim" },
@@ -92,35 +113,6 @@ lazy.setup({
         requires = { { "nvim-lua/plenary.nvim" } },
     },
 
-    -- Code Completion nvim-cmp
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
-            "hrsh7th/cmp-nvim-lsp",
-        },
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-        dependencies = { "rafamadriz/friendly-snippets" },
-    },
-    { "rafamadriz/friendly-snippets" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-nvim-lsp-signature-help" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-
-    -- Neodev for code completion inside neovim configuration files
-    {
-        "folke/neodev.nvim",
-        opts = {}
-    },
 
     -- Telescope Funny Finder
     {
@@ -147,8 +139,7 @@ lazy.setup({
         cmd = {
             "TmuxNavigateLeft",
             "TmuxNavigateDown",
-            "TmuxNavigateUp",
-            "TmuxNavigateRight",
+            "TmuxNavigateUp", "TmuxNavigateRight",
             "TmuxNavigatePrevious",
         },
         keys = {
@@ -166,17 +157,6 @@ lazy.setup({
         config = function()
             require("nvim-surround").setup({})
         end
-    },
-    -- File Explorer
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-            "3rd/image.nvim",
-        }
     },
 
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
