@@ -1,6 +1,6 @@
 -- General Neovim settings and configuration
-local g = vim.g                        -- Global variable
-local opt = vim.opt                    -- Set options (global/buffer/windows-scoped)
+local g = vim.g            -- Global variable
+local opt = vim.opt        -- Set options (global/buffer/windows-scoped)options
 
 -- General
 opt.mouse = 'a'                        -- Enable mouse support
@@ -20,6 +20,8 @@ opt.linebreak = true                   -- wrap on word boundary
 opt.termguicolors = true               -- Enable 24-bit RGB colors
 opt.laststatus = 3                     -- Set global status line
 opt.relativenumber = true              -- Use relative numberings
+opt.textwidth = 80
+opt.cc="+1"                            -- set a vert bar at 80 characters
 
 -- Tabs, indents
 opt.expandtab = true                   -- Use spaces instead of tabs
@@ -41,6 +43,10 @@ g.maplocalleader = ','
 -- Startup
 -- Disable nvim intro
 opt.shortmess:append "sI"
+
+
+-- toggle search highlighting
+vim.keymap.set("n", "<leader><F12>", ":set hlsearch! hlsearch?<CR>")
 
 
 -- -- Disable builtin pluings

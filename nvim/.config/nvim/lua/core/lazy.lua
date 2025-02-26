@@ -43,7 +43,15 @@ lazy.setup({
         config = function()
             require("lualine").setup({
                 icons_enabled = true,
-                theme = "catppuccin",
+                theme = "gruvbox",
+                sections = {
+                    lualine_a = {'mode'},
+                    lualine_b = {'diagnostics'},
+                    lualine_c = {'filename'},
+                    lualine_x = {'encoding'},
+                    lualine_y = {'branch', 'diff'},
+                    lualine_z = {'location'}
+                }
             })
         end,
     },
@@ -62,13 +70,6 @@ lazy.setup({
         "neovim/nvim-lspconfig",
         dependencies = { "saghen/blink.cmp" }
     },
-    {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release. version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-        dependencies = { "rafamadriz/friendly-snippets" },
-    },
 
     -- Neodev for code completion inside neovim configuration files
     {
@@ -86,6 +87,7 @@ lazy.setup({
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"  },
     },
+
     -- Go Delve DAP Configuration
     {
         "leoluz/nvim-dap-go"
@@ -159,8 +161,9 @@ lazy.setup({
         end
     },
 
+    { "mbbill/undotree" },
+
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
-    { "mbbill/undotree" }
 })
 
 vim.o.background = "dark"

@@ -35,12 +35,15 @@ local on_attach = function(client, bufnr)
 end
 
 
--- Adding new filetypes for vim to handle
-vim.filetype.add({ extension = { templ = 'templ', } })
-
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 require('mason').setup()
+require("mason-lspconfig").setup {
+    ensure_installed = {
+        "cssls", "gopls",
+        "lua_ls", "pyright",
+        "pylsp", "ts_ls" }
+}
 require('mason-lspconfig').setup_handlers({
 
     function(server_name)
@@ -108,46 +111,6 @@ require('mason-lspconfig').setup_handlers({
             },
         }
     end,
-
-    ["gopls"] = function()
-        require('lspconfig').gopls.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-                gopls = {
-                    analyses = {
-                        unusedparams = true,
-                    },
-                    staticcheck = true,
-                    gofumpt = true,
-                }
-            }
-        }
-    end,
-
-    ["efm"] = function()
-        local languages = require('efmls-configs.defaults').languages()
-
-        -- additional formatters and linters
-        -- local jq = require("efmls-configs.formatters.jq")
-        local prettier = require("efmls-configs.formatters.prettier")
-        local jq = require("efmls-configs.linters.jq")
-        languages = vim.tbl_extend('force', languages, {
-            json = { jq, prettier },
-        })
-        --
-
-        local efmls_configs = {
-            filetypes = vim.tbl_keys(languages),
-            init_options = {
-                documentFormatting = true,
-                documentRangeFormatting = true
-            },
-            settings = {
-                rootMarkers = { ".git/" },
-                languages = languages,
-            }
-        }
 })
 
 require("mason-nvim-dap").setup({
