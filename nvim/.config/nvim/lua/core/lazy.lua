@@ -41,7 +41,7 @@ lazy.setup({
         priority = 1000,
         lazy = false,
         config = function()
-                require("catppuccin").setup({
+            require("catppuccin").setup({
                 cmp = true,
                 gitsigns = true,
                 nvimtree = true,
@@ -117,9 +117,9 @@ lazy.setup({
     { "hrsh7th/cmp-path" },
 
     -- Neodev for code completion inside neovim configuration files
-    { 
+    {
         "folke/neodev.nvim",
-        opts = {} 
+        opts = {}
     },
 
     -- Telescope Funny Finder
@@ -178,6 +178,10 @@ lazy.setup({
             "3rd/image.nvim",
         }
     },
+
+    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
+    { "mbbill/undotree" }
 })
 
-vim.cmd.colorscheme("catppuccin")
+vim.o.background = "dark"
+vim.cmd.colorscheme("gruvbox")

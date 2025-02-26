@@ -33,11 +33,10 @@ local on_attach = function(client, bufnr)
         c.rename = false
         c.signature_help = false
     end
-
 end
 
 
--- Adding new filetypes for vim to handle 
+-- Adding new filetypes for vim to handle
 vim.filetype.add({ extension = { templ = 'templ', } })
 
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -84,7 +83,7 @@ require('mason-lspconfig').setup_handlers({
             settings = {
                 pylsp = {
                     builtin = {
-                        installExtraArgs = { "flake8", 'pylint', 'pycodestyle'},
+                        installExtraArgs = { "flake8", 'pylint', 'pycodestyle' },
                     },
                     plugins = {
                         jedi_completion = { enabled = false },
@@ -136,8 +135,7 @@ require('mason-lspconfig').setup_handlers({
         local prettier = require("efmls-configs.formatters.prettier")
         local jq = require("efmls-configs.linters.jq")
         languages = vim.tbl_extend('force', languages, {
-         json = { jq, prettier },
-         html = { prettier },
+            json = { jq, prettier },
         })
         --
 
