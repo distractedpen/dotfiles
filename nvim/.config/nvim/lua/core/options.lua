@@ -4,7 +4,7 @@ local opt = vim.opt        -- Set options (global/buffer/windows-scoped)options
 
 -- General
 opt.mouse = 'a'                        -- Enable mouse support
-opt.clipboard = 'unnamedplus'          -- Copy/paste to system clipboard
+opt.clipboard = "unnamed,unnamedplus" -- Copy/paste to system clipboard
 opt.swapfile = false                   -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'   -- Autocomplete options
 
@@ -45,8 +45,10 @@ g.maplocalleader = ','
 opt.shortmess:append "sI"
 
 
--- toggle search highlighting
+-- custom keybindings
 vim.keymap.set("n", "<leader><F12>", ":set hlsearch! hlsearch?<CR>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
 
 
 -- -- Disable builtin pluings

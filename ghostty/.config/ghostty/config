@@ -1,0 +1,4 @@
+window-decoration=server
+theme=GruvboxDark
+copy-on-select=false
+app-notifications=no-clipboard-copy
