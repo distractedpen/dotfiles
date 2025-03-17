@@ -4,6 +4,8 @@ export PATH=/usr/local/share/dotnet:$HOME/.dotnet/tools:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/bin/flutter/bin:$PATH
 export PATH=$HOME/bin/PurpleExplorer_osx-arm64:$PATH
+export PATH=$HOME/bin/zig-macos-aarch64-0.14.0:$PATH
+export PATH=/opt/homebrew/opt/libpq/bin:$PATH
 
 
 # setup homebrew
@@ -25,4 +27,5 @@ export ARCHFLAGS="-arch arm64"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
+# Motivation every day
+curl -s https://qapi.vercel.app/api/random | jq '"\(.quote) -\(.author)"' | cowsay
