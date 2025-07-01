@@ -114,6 +114,7 @@ require('mason-lspconfig').setup_handlers({
 })
 
 require("mason-nvim-dap").setup({
-    ensure_installed = { "python", "delve" },
-    handlers = {}
+    ensure_installed = { "python", "delve", "cpptools" },
+    handlers = {
+    }
 })
