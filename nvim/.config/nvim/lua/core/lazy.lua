@@ -200,7 +200,20 @@ lazy.setup({
         config = function()
             require("cloak").setup({})
         end,
+    },
+    {
+        "Exafunction/windsurf.vim",
+        event = 'BufEnter',
+    },
+    {
+        "stevearc/oil.nvim",
+        --@module 'oil'
+        --@type oil.SetupOpts
+        opts = {},
+        dependencies = {{ "echasnovski/mini.icons", opts = {} }},
+        lazy = false,
     }
+
 })
 
 vim.o.background = "dark"
