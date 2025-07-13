@@ -200,6 +200,9 @@ lazy.setup({
         config = function()
             require("cloak").setup({})
         end,
+    },
+    {
+        "jez/vim-better-sml",
     }
 })
 
