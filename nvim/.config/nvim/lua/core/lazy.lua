@@ -193,12 +193,17 @@ lazy.setup({
         },
     },
     { "mbbill/undotree" },
-
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
     {
         "laytan/cloak.nvim",
         config = function()
             require("cloak").setup({})
+        end,
+    },
+    { 
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
         end,
     },
     {
