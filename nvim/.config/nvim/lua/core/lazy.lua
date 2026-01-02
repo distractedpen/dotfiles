@@ -43,7 +43,7 @@ lazy.setup({
         config = function()
             require("lualine").setup({
                 icons_enabled = true,
-                theme = "gruvbox",
+                theme = "",
                 sections = {
                     lualine_a = { 'mode' },
                     lualine_b = { 'diagnostics' },
@@ -68,7 +68,7 @@ lazy.setup({
     { "williamboman/mason-lspconfig.nvim" },
     {
         "neovim/nvim-lspconfig",
-        dependencies = { "saghen/blink.cmp" }
+        dependencies = { "saghen/blink.cmp" },
     },
 
     -- Neodev for code completion inside neovim configuration files
@@ -193,7 +193,6 @@ lazy.setup({
         },
     },
     { "mbbill/undotree" },
-    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
     {
         "laytan/cloak.nvim",
         config = function()
@@ -208,8 +207,18 @@ lazy.setup({
     },
     {
         "jez/vim-better-sml",
+    },
+    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
+    { 
+        "rose-pine/neovim",
+        name="rose-pine",
+        config = function()
+            require("rose-pine").setup({
+                variant = "moon"
+            })
+        end,
     }
 })
 
-vim.o.background = "dark"
-vim.cmd.colorscheme("gruvbox")
+-- vim.o.background = ""
+vim.cmd.colorscheme("rose-pine")

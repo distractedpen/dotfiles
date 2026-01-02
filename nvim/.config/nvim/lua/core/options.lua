@@ -20,7 +20,7 @@ opt.linebreak = true                   -- wrap on word boundary
 opt.termguicolors = true               -- Enable 24-bit RGB colors
 opt.laststatus = 3                     -- Set global status line
 opt.relativenumber = true              -- Use relative numberings
-opt.textwidth = 80
+opt.textwidth = 120
 opt.cc="+1"                            -- set a vert bar at 80 characters
 
 -- Tabs, indents
