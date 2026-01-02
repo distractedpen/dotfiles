@@ -63,9 +63,14 @@ lazy.setup({
         dependencies = { "rafamadriz/friendly-snippets" },
         version = "*",
     },
-
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
+    { "mason-org/mason.nvim" },
+    { "mason-org/mason-lspconfig.nvim",
+       opts = {},
+       dependencies = {
+           { "mason-org/mason.nvim", opts = {} },
+           "neovim/nvim-lspconfig",
+       },
+    },
     {
         "neovim/nvim-lspconfig",
         dependencies = { "saghen/blink.cmp" },
@@ -217,6 +222,11 @@ lazy.setup({
                 variant = "moon"
             })
         end,
+    },
+    {
+      "vhyrro/luarocks.nvim",
+      priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+      config = true,
     }
 })
 

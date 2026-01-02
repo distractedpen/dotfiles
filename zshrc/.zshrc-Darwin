@@ -6,7 +6,18 @@ export PATH=$HOME/bin/flutter/bin:$PATH
 export PATH=$HOME/bin/PurpleExplorer_osx-arm64:$PATH
 export PATH=$HOME/bin/zig-macos-aarch64-0.14.0:$PATH
 export PATH=/opt/homebrew/opt/libpq/bin:$PATH
+export PATH=/opt/homebrew/Cellar/nvm/0.40.3:$PATH
+export PATH=$(go env GOPATH)/bin:$PATH
 
+# Oracle Client Connection
+export ORACLE_HOME=$HOME/oracle/instantclient_19_8
+export DYLD_LIBRARY_PATH=$ORACLE_HOME${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}
+export OCI_LIB_DIR=$ORACLE_HOME
+export OCI_INC_DIR=$ORACLE_HOME/sdk/include
+export PATH=$ORACLE_HOME:$PATH
+
+# Added by Windsurf
+export PATH="/Users/cn508857/.codeium/windsurf/bin:$PATH"
 
 # setup homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)" 
@@ -21,11 +32,21 @@ eval "$(pyenv init -)"
 export JENV_ROOT="$HOME/.jenv"
 export PATH=$JENV_ROOT/bin:$PATH
 eval "$(jenv init -)"
+export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 
 # Compilation flags
 export ARCHFLAGS="-arch arm64"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# Fix for AWS CLI access through ZScalar
+security find-certificate -a -p > ~/cacert-keychain.pem
+security find-certificate -a -p /System/Library/Keychains/SystemRootCertificates.keychain >> ~/cacert-keychain.pem
+export AWS_CA_BUNDLE=~/cacert-keychain.pem
+
+
+
 # Motivation every day
-curl -s https://qapi.vercel.app/api/random | jq '"\(.quote) -\(.author)"' | cowsay
+cowsay "moo"
+
