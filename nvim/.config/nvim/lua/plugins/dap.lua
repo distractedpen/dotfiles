@@ -51,9 +51,10 @@ vim.keymap.set('n', '<leader>dt', ui_toggle)
 
 -- hook dapui into dap
 dap.listeners.before.attach.dapui_config = ui_open
-dap.listeners.before.launch.dapui_config = ui_close
 dap.listeners.before.event_terminated.dapui_config = ui_close
 dap.listeners.before.event_exited_dapui_config = ui_close
 
 -- if a debugger is attached to the buffer
 -- add the debugger's code actions to the menu
+
+require('dap-python').setup("/home/" .. os.getenv("USER") .. "/.py3nvim/bin/python")

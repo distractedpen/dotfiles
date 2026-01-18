@@ -98,6 +98,11 @@ lazy.setup({
         "leoluz/nvim-dap-go"
     },
 
+    -- Python DAP Configuration
+    {
+        "mfussenegger/nvim-dap-python",
+    },
+
     -- FORMATTERS
     { "wesleimp/stylua.nvim" },
 
@@ -227,8 +232,13 @@ lazy.setup({
       "vhyrro/luarocks.nvim",
       priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
       config = true,
+    },
+    {
+        "xiyaowong/transparent.nvim",
     }
+
 })
 
 -- vim.o.background = ""
 vim.cmd.colorscheme("rose-pine")
+vim.g.transparent_enabled = true
