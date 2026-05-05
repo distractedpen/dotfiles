@@ -18,53 +18,53 @@
 -- Document colors are enabled for highlighting color references in a document.
 -- To opt out call vim.lsp.document_color.enable(false, args.buf) on LspAttach.
 
-local on_attach = function(client, bufnr)
-    local bufmap = function(keys, func)
-        vim.keymap.set('n', keys, func, { buffer = bufnr })
-    end
-
-    bufmap('<leader>a', vim.lsp.buf.code_action)
-
-    bufmap('gr', require('telescope.builtin').lsp_references)
-    bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
-    bufmap('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols)
-
-    vim.api.nvim_buf_create_user_command(bufnr, 'F', function(_)
-        vim.lsp.buf.format()
-    end, {})
-
-    local c = client.capabilities
-    if client.name == 'pyright' then
-        c.hover = false
-    end
-
-    if client.name == 'pylsp' then
-        c.rename = false
-        c.signature_help = false
-    end
-end
+-- local on_attach = function(client, bufnr)
+--     local bufmap = function(keys, func)
+--         vim.keymap.set('n', keys, func, { buffer = bufnr })
+--     end
+--
+--     bufmap('<leader>a', vim.lsp.buf.code_action)
+--
+--     bufmap('gr', require('telescope.builtin').lsp_references)
+--     bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
+--     bufmap('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols)
+--
+--     vim.api.nvim_buf_create_user_command(bufnr, 'F', function(_)
+--         vim.lsp.buf.format()
+--     end, {})
+--
+--     local c = client.capabilities
+--     if client.name == 'pyright' then
+--         c.hover = false
+--     end
+--
+--     if client.name == 'pylsp' then
+--         c.rename = false
+--         c.signature_help = false
+--     end
+-- end
 
 
 require('mason').setup()
-require("mason-lspconfig").setup {
-    ensure_installed = {
-        "cssls", "gopls",
-        "lua_ls", "pyright",
-        "ruff", "ts_ls" }
-}
+-- require("mason-lspconfig").setup {
+--     ensure_installed = {
+--         "cssls", "gopls",
+--         "lua_ls", "pyright",
+--         "ruff", "ts_ls" }
+-- }
 
-local capabilities = require('blink.cmp').get_lsp_capabilities()
-vim.lsp.config("*", {
-    capabilities = capabilities,
-    root_markers = { ".git" },
-});
+-- local capabilities = require('blink.cmp').get_lsp_capabilities()
+-- vim.lsp.config("*", {
+--     capabilities = capabilities,
+--     root_markers = { ".git" },
+-- });
 
-vim.api.nvim_create_autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('my.lsp', {}),
-    callback = function(args)
-        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-    end
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     group = vim.api.nvim_create_augroup('my.lsp', {}),
+--     callback = function(args)
+--         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+--     end
+-- })
 
 -- vim.lsp.config['luals'] = {
 --  -- Command and arguments to start the server.
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --  }
 -- }
 
-require("mason-nvim-dap").setup({
-    ensure_installed = { "python", "delve" },
-    handlers = {}
-})
+-- require("mason-nvim-dap").setup({
+--     ensure_installed = { "python", "delve" },
+--     handlers = {}
+-- })

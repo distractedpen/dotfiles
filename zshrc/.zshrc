@@ -30,10 +30,10 @@ fi
 # User Aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias vim="nvim"
 alias da="ls -la"
 alias nvimconfig="cd ~/.config/nvim"
 alias cls="clear"
+alias py="python3"
 
 source "$HOME/.zshrc-`uname`"
 

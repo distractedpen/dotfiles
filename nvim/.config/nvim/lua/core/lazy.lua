@@ -109,6 +109,7 @@ lazy.setup({
     -- Nvim Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
         build = ":TSUpdate",
     },
 
@@ -124,7 +125,7 @@ lazy.setup({
     -- Telescope Funny Finder
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        version = "*",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
     {
@@ -209,7 +210,7 @@ lazy.setup({
             require("cloak").setup({})
         end,
     },
-    { 
+    {
         "stevearc/oil.nvim",
         config = function()
             require("oil").setup()
@@ -219,7 +220,24 @@ lazy.setup({
         "jez/vim-better-sml",
     },
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
-    { 
+    {
+        'maxmx03/retrolegends.nvim',
+        priority = 1000,
+        lazy = false,
+        config = function()
+            vim.g.retrolegends_treesitter = true
+            vim.g.retrolegends_lspconfig = true
+            vim.g.retrolegends_telescope = true
+            vim.g.retrolegends_dashboard = true
+            vim.g.retrolegends_gitsigns = true
+            vim.g.retrolegends_nvimtree = true
+            vim.g.retrolegends_cmp = true
+            vim.g.retrolegends_markview = true
+            vim.g.retrolegends_transparency = true
+            vim.cmd.colorscheme 'retrolegends'
+        end,
+    },
+    {
         "rose-pine/neovim",
         name="rose-pine",
         config = function()
@@ -234,11 +252,18 @@ lazy.setup({
       config = true,
     },
     {
-        "xiyaowong/transparent.nvim",
+        "oysandvik94/curl.nvim",
+        cmd = { "CurlOpen" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = true,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+            require("treesitter-context").setup()
+        end
+
     }
-
 })
-
--- vim.o.background = ""
-vim.cmd.colorscheme("rose-pine")
-vim.g.transparent_enabled = true
