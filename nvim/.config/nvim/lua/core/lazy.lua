@@ -24,6 +24,11 @@ end
 
 -- Start setup
 lazy.setup({
+    {
+      "vhyrro/luarocks.nvim",
+      priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+      config = true,
+    },
 
     -- Shortcut to comment out lines
     {
@@ -213,12 +218,42 @@ lazy.setup({
     {
         "stevearc/oil.nvim",
         config = function()
-            require("oil").setup()
+            require("oil").setup({
+                win_options = {
+                    signcolumn = "yes:2",
+                }
+            })
         end,
     },
     {
-        "jez/vim-better-sml",
+        "refractalize/oil-git-status.nvim",
+
+        dependencies = {
+            "stevearc/oil.nvim",
+        },
+
+        config = true,
     },
+
+
+    {
+        "oysandvik94/curl.nvim",
+        cmd = { "CurlOpen" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = true,
+    },
+
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+            require("treesitter-context").setup()
+        end
+
+    },
+
+    -- Colorschemes
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = {} },
     {
         'maxmx03/retrolegends.nvim',
@@ -246,24 +281,4 @@ lazy.setup({
             })
         end,
     },
-    {
-      "vhyrro/luarocks.nvim",
-      priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-      config = true,
-    },
-    {
-        "oysandvik94/curl.nvim",
-        cmd = { "CurlOpen" },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = true,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup()
-        end
-
-    }
 })
